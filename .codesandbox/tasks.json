@@ -2,17 +2,29 @@
   "setupTasks": [
     {
       "name": "Install Dependencies",
-      "command": "pnpm install"
+      "command": "npm install"
     }
   ],
   "tasks": {
     "dev": {
-      "name": "dev",
-      "command": "pnpm update next@canary && pnpm dev",
+      "name": "dev (loader rule on: page returns HTTP 500)",
+      "command": "npm install next@canary && npm run dev",
       "runAtStart": true,
       "restartOn": {
         "clone": true
       }
+    },
+    "dev:control": {
+      "name": "dev:control (loader rule off: page returns HTTP 200)",
+      "command": "npm run dev:control"
+    },
+    "build": {
+      "name": "build (loader rule on: fails)",
+      "command": "npm run build"
+    },
+    "build:control": {
+      "name": "build:control (loader rule off: passes)",
+      "command": "npm run build:control"
     }
   }
 }
